@@ -1,10 +1,3 @@
-//
-//  GameResult.swift
-//  MovieQuiz
-//
-//  Created by MacOSMini on 05.11.2024.
-//
-
 import UIKit
 
 struct GameResult {

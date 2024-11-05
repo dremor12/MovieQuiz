@@ -1,10 +1,3 @@
-//
-//  StatisticService.swift
-//  MovieQuiz
-//
-//  Created by MacOSMini on 05.11.2024.
-//
-
 import UIKit
 
 final class StatisticService {
@@ -16,7 +9,7 @@ final class StatisticService {
         case bestGameTotal
         case gamesCount
     }
-
+    
     private let storage: UserDefaults = .standard
     
     private var correctAnswrs: Int {
