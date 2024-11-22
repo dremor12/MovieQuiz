@@ -1,7 +1,7 @@
 import UIKit
 
 class QuestionFactory: QuestionFactoryProtocol {
-    
+
     private let moviesLoader: MoviesLoading
     private weak var delegate: QuestionFactoryDelegate?
     private var movies: [MostPopularMovie] = []
@@ -68,7 +68,7 @@ class QuestionFactory: QuestionFactoryProtocol {
             }
         }
     }
-    
+
     func setup(delegate: QuestionFactoryDelegate) {
         self.delegate = delegate
     }
