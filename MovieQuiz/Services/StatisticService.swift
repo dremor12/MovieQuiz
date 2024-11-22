@@ -22,7 +22,6 @@ final class StatisticService {
     }
 }
 
-
 extension StatisticService: StatisticServiceProtocol {
     var gamesCount: Int {
         get {

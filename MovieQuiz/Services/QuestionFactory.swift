@@ -1,10 +1,9 @@
 import UIKit
 
-
 class QuestionFactory: QuestionFactoryProtocol {
-
+    
     weak var delegate: QuestionFactoryDelegate?
-
+    
     private let questions: [QuizQuestion] = [
         QuizQuestion(
             image: "The Godfather",
