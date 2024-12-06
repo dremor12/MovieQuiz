@@ -6,7 +6,10 @@ final class QuestionFactory: QuestionFactoryProtocol {
     private weak var delegate: QuestionFactoryDelegate?
     private var movies: [MostPopularMovie] = []
     
-    init(moviesLoader: MoviesLoading, delegate: QuestionFactoryDelegate?) {
+    init(
+        moviesLoader: MoviesLoading,
+        delegate: QuestionFactoryDelegate?
+    ) {
         self.moviesLoader = moviesLoader
         self.delegate = delegate
     }
@@ -89,9 +92,10 @@ final class QuestionFactory: QuestionFactoryProtocol {
                 let text = "Рейтинг этого фильма больше, чем \(formattedThreshold)?"
                 let correctAnswer = rating > threshold
                 
-                let question = QuizQuestion(image: imageData,
-                                            text: text,
-                                            correctAnswer: correctAnswer)
+                let question = QuizQuestion(
+                    image: imageData,
+                    text: text,
+                    correctAnswer: correctAnswer)
 
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
