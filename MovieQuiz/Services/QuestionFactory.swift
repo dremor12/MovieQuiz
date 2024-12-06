@@ -1,7 +1,6 @@
 import UIKit
 
 final class QuestionFactory: QuestionFactoryProtocol {
-    
     private let moviesLoader: MoviesLoading
     private weak var delegate: QuestionFactoryDelegate?
     private var movies: [MostPopularMovie] = []
@@ -71,7 +70,7 @@ final class QuestionFactory: QuestionFactoryProtocol {
             }
         }
     }
-    
+
     func setup(delegate: QuestionFactoryDelegate) {
         self.delegate = delegate
     }
@@ -106,6 +105,24 @@ final class QuestionFactory: QuestionFactoryProtocol {
                     guard let self = self else { return }
                     self.delegate?.didFailToLoadData(with: error)
                 }
+            }
+            
+            let rating = Float(movie.rating) ?? 0
+            let threshold = Float.random(in: 5...9)
+            let formattedThreshold = String(format: "%.1f", threshold)
+            
+            let text = "Рейтинг этого фильма больше, чем \(formattedThreshold)?"
+            let correctAnswer = rating > threshold
+            
+            let question = QuizQuestion(
+                image: imageData,
+                text: text,
+                correctAnswer: correctAnswer
+            )
+
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.delegate?.didReceiveNextQuestion(question: question)
             }
         }
     }
