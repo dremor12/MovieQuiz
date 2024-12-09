@@ -8,12 +8,15 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var textLabel: UILabel!
     @IBOutlet private var counterLabel: UILabel!
-    @IBOutlet var yesButton: UIButton!
-    @IBOutlet var noButton: UIButton!
+    @IBOutlet private var yesButton: UIButton!
+    @IBOutlet private var noButton: UIButton!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = 8
+
         alertPresenter = AlertPresenter(viewController: self)
         presenter = MovieQuizPresenter(viewController: self)
     }
@@ -28,14 +31,12 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     
     func show(quiz step: QuizStepViewModel) {
         imageView.layer.borderColor = UIColor.clear.cgColor
-        imageView.image = step.image
+        imageView.image = UIImage(data: step.image)
         textLabel.text = step.question
         counterLabel.text = step.questionNumber
     }
     
     func highlightImageBorder(isCorrectAnswer: Bool) {
-        imageView.layer.masksToBounds = true
-        imageView.layer.borderWidth = 8
         imageView.layer.borderColor = isCorrectAnswer ? UIColor.YpGreen.cgColor : UIColor.YpRed.cgColor
     }
     
